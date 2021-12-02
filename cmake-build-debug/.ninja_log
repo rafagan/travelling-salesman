@@ -1,0 +1,18 @@
+# ninja log v5
+1	677	1638451323983259755	CMakeFiles/travelling_salesman.dir/src/graph/Node.cpp.o	d39dfc532596db52
+0	685	1638451323991923027	CMakeFiles/travelling_salesman.dir/src/graph/Graph.cpp.o	316ba22699f27293
+1	703	1638451324008984975	CMakeFiles/travelling_salesman.dir/src/main.cpp.o	d9f5c5094c39dd12
+2	1183	1638451334381867798	CMakeFiles/travelling_salesman.dir/src/solver/TSPSolver.cpp.o	a6729ef5ac68581f
+1184	1280	1638451334481066115	travelling_salesman	24a410225f213320
+3	1244	1638458411787215059	CMakeFiles/travelling_salesman.dir/src/solver/TSPSolver.cpp.o	a6729ef5ac68581f
+1244	1309	1638458411858423366	travelling_salesman	24a410225f213320
+1	1124	1638458635754260628	CMakeFiles/travelling_salesman.dir/src/solver/TSPSolver.cpp.o	a6729ef5ac68581f
+1125	1187	1638458635829863348	travelling_salesman	24a410225f213320
+2	1169	1638458832950350647	CMakeFiles/travelling_salesman.dir/src/solver/TSPSolver.cpp.o	a6729ef5ac68581f
+1170	1247	1638458833037098394	travelling_salesman	24a410225f213320
+2	921	1638459225336851424	CMakeFiles/travelling_salesman.dir/src/solver/TSPSolver.cpp.o	a6729ef5ac68581f
+921	982	1638459225402117117	travelling_salesman	24a410225f213320
+2	1122	1638459906898545606	CMakeFiles/travelling_salesman.dir/src/solver/TSPSolver.cpp.o	a6729ef5ac68581f
+1122	1178	1638459906962495801	travelling_salesman	24a410225f213320
+2	939	1638459916919392471	CMakeFiles/travelling_salesman.dir/src/solver/TSPSolver.cpp.o	a6729ef5ac68581f
+940	987	1638459916971536680	travelling_salesman	24a410225f213320

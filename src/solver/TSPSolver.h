@@ -15,9 +15,11 @@ private:
     Graph* findMinimumSpanningTree();
     double calculateMinimumSpanningTreeCost();
 public:
-     OutputData solveGreedily(InputData inputData);
-     void exportTree(const std::string& path);
-     void exportCycle(const std::string& path);
+    ~TSPSolver();
+
+    OutputData solveGreedily(InputData inputData);
+    void exportTree(const std::string& path);
+    void exportCycle(const std::string& path);
 };
 
 #endif

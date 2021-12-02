@@ -2,12 +2,15 @@
 #define __GRAPH_H__
 
 #include <vector>
-#include "Node.h"
+
+class Node;
+struct Point;
 
 struct Graph {
-    std::vector<Node> vertices;
+    std::vector<Node*> vertices;
 
     explicit Graph(const std::vector<Point*>& values);
+    ~Graph();
 };
 
 #endif

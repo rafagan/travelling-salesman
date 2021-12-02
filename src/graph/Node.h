@@ -8,7 +8,7 @@
 struct Point;
 
 struct Node {
-    typedef std::tuple<Node, double> EDGE;
+    typedef std::tuple<Node*, double> EDGE;
 
     const Point* value = nullptr;
     std::vector<EDGE> edges;
@@ -18,7 +18,7 @@ struct Node {
     Node(const Point* value, std::vector<EDGE> edges)
         : value(value), edges(std::move(edges)) {};
 
-    std::string toString() const;
+    [[nodiscard]] std::string toString() const;
 };
 
 #endif

@@ -8,7 +8,7 @@ using namespace std;
 Graph::Graph(const std::vector<Point*>& values) {
     vertices = vector<Node*>();
     for(auto& point : values) {
-        vertices.push_back(new Node(point, vector<Node::EDGE>()));
+        vertices.push_back(new Node(point, vector<Node::Edge>()));
     }
 
     for(auto i = 0; i < values.size(); i++) {
@@ -16,6 +16,7 @@ Graph::Graph(const std::vector<Point*>& values) {
         for(int j = 0; j < values.size(); j++) {
             if(i == j) continue;
             node->edges.emplace_back(
+                    node,
                     vertices[j],
                     calcEuclidianDistance(node->value, vertices[j]->value)
             );

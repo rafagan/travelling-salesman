@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "travelling_salesman::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-travelling_salesman-Debug-ea957b9c7e680f20286e.json",
+					"jsonFile" : "target-travelling_salesman-Debug-d24b6b262951d183e03a.json",
 					"name" : "travelling_salesman",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/rafagan/Downloads/travelling-salesman/cmake-build-debug",
-		"source" : "/Users/rafagan/Downloads/travelling-salesman"
+		"build" : "/Users/Code/Marco/travelling-salesman/cmake-build-debug",
+		"source" : "/Users/Code/Marco/travelling-salesman"
 	},
 	"version" : 
 	{

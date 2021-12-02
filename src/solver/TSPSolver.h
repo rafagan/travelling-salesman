@@ -2,6 +2,7 @@
 #define __TSP_SOLVER_H__
 
 #include <string>
+#include "graph/Node.h"
 
 class Graph;
 struct OutputData;
@@ -10,10 +11,10 @@ struct InputData;
 class TSPSolver {
 private:
     Graph* graph = nullptr;
-    Graph* minimumSpanningTree = nullptr;
+    std::vector<Node::Edge> minimumSpanningTreeEdges;
 
-    Graph* findMinimumSpanningTree();
-    double calculateMinimumSpanningTreeCost();
+    std::vector<Node::Edge> findMinimumSpanningTreeEdges();
+    void findDepthFirstSearchCycle();
 public:
     ~TSPSolver();
 

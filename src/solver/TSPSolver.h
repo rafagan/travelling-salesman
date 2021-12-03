@@ -12,9 +12,10 @@ class TSPSolver {
 private:
     Graph* graph = nullptr;
     std::vector<Node::Edge> minimumSpanningTreeEdges;
+    std::vector<Node::Edge> cycleEdges;
 
     std::vector<Node::Edge> findMinimumSpanningTreeEdges();
-    void findDepthFirstSearchCycle();
+    double findDepthFirstSearchCycle();
 public:
     ~TSPSolver();
 

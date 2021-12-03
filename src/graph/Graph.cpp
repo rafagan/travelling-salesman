@@ -5,6 +5,8 @@
 
 using namespace std;
 
+Graph::Graph() = default;
+
 Graph::Graph(const std::vector<Point*>& values) {
     vertices = vector<Node*>();
     for(auto& point : values) {

@@ -3,8 +3,10 @@
 #include "graph/Graph.h"
 #include "graph/Node.h"
 
+#include <iostream>
 #include <vector>
 #include <unordered_set>
+#include <unordered_map>
 #include <queue>
 #include <fstream>
 
@@ -23,7 +25,7 @@ OutputData TSPSolver::solveGreedily(InputData inputData) {
     delete this->graph;
     this->graph = new Graph(points);
     this->minimumSpanningTreeEdges = this->findMinimumSpanningTreeEdges();
-    outputData.weightSum = 0;
+    outputData.weightSum = this->findDepthFirstSearchCycle();
 
     clock_t endTime = clock();
     outputData.timeSecs = (double)(endTime - startTime) / CLOCKS_PER_SEC;
@@ -44,21 +46,21 @@ vector<Node::Edge> TSPSolver::findMinimumSpanningTreeEdges() {
     heap.push(Node::Edge(make_tuple(nullptr, startNode, 0)));
 
     vector<Node::Edge> mstEdges;
-    while(mstEdges.size() < this->graph->vertices.size()) {
+    while(mstEdges.size() < this->graph->vertices.size() - 1) {
         auto lowerEdge = heap.top();
         heap.pop();
         auto destNode = get<1>(lowerEdge);
 
-        const auto contains = visitedNodes.find(destNode->toString()) != visitedNodes.end();
-        if(contains) continue;
+        // Contains
+        if(visitedNodes.find(destNode->toString()) != visitedNodes.end()) continue;
 
         visitedNodes.insert(destNode->toString());
-        mstEdges.push_back(lowerEdge);
+        if(get<0>(lowerEdge) != nullptr) mstEdges.push_back(lowerEdge);
 
         for(auto& edge: destNode->edges) {
             auto nextNode = get<1>(edge);
-            const auto contains = visitedNodes.find(nextNode->toString()) != visitedNodes.end();
-            if(contains) continue;
+            // Contains
+            if(visitedNodes.find(nextNode->toString()) != visitedNodes.end()) continue;
             heap.push(edge);
         }
     }
@@ -66,28 +68,44 @@ vector<Node::Edge> TSPSolver::findMinimumSpanningTreeEdges() {
     return mstEdges;
 }
 
-void TSPSolver::findDepthFirstSearchCycle() {
+double TSPSolver::findDepthFirstSearchCycle() {
+    unordered_map<string, Node*> vertices;
+    for(auto edge: this->minimumSpanningTreeEdges) {
+        auto origin = get<0>(edge);
+        auto dest = get<1>(edge);
+        if(vertices.count(origin->toString()) == 0) {
+            vertices[origin->toString()] = new Node(origin->value, vector<Node::Edge>());
+        }
+        if(vertices.count(dest->toString()) == 0) {
+            vertices[dest->toString()] = new Node(dest->value, vector<Node::Edge>());
+        }
 
+        vertices[origin->toString()]->edges.push_back(edge);
+    }
+
+    Graph mst;
+    for(auto& pair: vertices) {
+        auto node = pair.second;
+        mst.vertices.push_back(node);
+    }
+
+    for(auto& node: mst.vertices) {
+        cout << "Eu sou o " << node->toString();
+        cout << " e tenho como filhos:" << endl;
+        for(auto& edge: node->edges) {
+            cout << "\t" << get<1>(edge)->toString() << endl;
+        }
+    }
+
+    cout << "xxx" << endl;
+    return 0;
 }
-
-//double TSPSolver::calculateMinimumSpanningTreeCost() {
-//    double cost = 0.0;
-//    for(auto& node: this->minimumSpanningTree->vertices) {
-//        if(!node->edges.empty()) {
-//            for(auto& edge: node->edges) {
-//                cost += get<2>(edge);
-//            }
-//        }
-//    }
-//    return cost;
-//}
 
 void TSPSolver::exportTree(const std::string& path) {
     remove( path.c_str());
     ofstream file(path, std::ios_base::app);
     for(auto edge: this->minimumSpanningTreeEdges) {
         auto origin = get<0>(edge);
-        if(origin == nullptr) continue;
         auto dest = get<1>(edge);
         file << origin->toString() << "\n";
         file << dest->toString() << "\n";

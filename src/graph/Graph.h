@@ -9,6 +9,7 @@ struct Point;
 struct Graph {
     std::vector<Node*> vertices;
 
+    Graph();
     explicit Graph(const std::vector<Point*>& values);
     ~Graph();
 };
